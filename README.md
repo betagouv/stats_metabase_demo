@@ -1,5 +1,5 @@
-# Demonstrateur tracking Metabase
-Ce dépôt contient des exemples d'implémentation afin de mettre en place une solution personalisée de suivi utilistateur et de statistiques de fréquentation.
+# Demonstrattion tracking JS/Metabase
+Ce dépôt contient des exemples d'implémentation afin de mettre en place une solution personalisée de suivi utilistateur et de statistiques de fréquentation d'une interface ou application web.
 
 La solution exposée utilise un _stack_ technologique courant: Python, Javascript et PostgreSQL, qui devrait pouvoir s'intégrer facilement dans n'importe quel interface ou application web (à l'exception éventuelle de l'API Python, qui peut aisément être implémenté dans d'autres langages: n'hésitez pas à en fournir un exemple !).
 
@@ -22,7 +22,7 @@ Pour lancer la démonstration, avec l'aide de [docker-compose](https://docs.dock
 ~> docker-compose up
 ```
 
-Une fois lancé, les prochaines interfaces seront disponibles:
+Une fois lancé, les interfaces suivantes seront disponibles:
 - [http://localhost:5000](http://localhost:5000) l'api (avec la documentation OpenAPI disponible sur [http://localhost:5000/docs](http://localhost:5000/docs))
 - [http://localhost:8080](http://localhost:8080) : une site web de démonstration équipé du tracker JS
 - [http://localhost:3000](http://localhost:3000) : l'interface metabase
