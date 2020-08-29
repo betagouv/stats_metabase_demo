@@ -1,5 +1,7 @@
-# Demonstrateur tracking Js/Python/PostgreSQL/Metabase
+# Demonstrateur tracking Metabase
 Ce dépôt contient des exemples d'implémentation afin de mettre en place une solution personalisée de suivi utilistateur et de statistiques de fréquentation.
+
+La solution exposée utilise un _stack_ technologique courant: Python, Javascript et PostgreSQL, qui devrait pouvoir s'intégrer facilement dans n'importe quel interface ou application web (à l'exception éventuelle de l'API Python, qui peut aisément être implémenté dans d'autres langages: n'hésitez pas à en fournir un exemple !).
 
 :construction: En Construction :construction:
 
