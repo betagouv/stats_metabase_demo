@@ -31,6 +31,10 @@ En parallèle, si vous disposez d'un client PostgreSQL (psql ou autre), vous pou
 
 > Remarque : dans l'environnement de démonstration aucune donnée n'est persistante.
 
+Lors de la navigation sur le site, l'envoi des trackers peut être vérifié dans les outils de développement du navigateur (l'événement `scroll` sera envoyé _très_ souvent) :
+
+![Exemple navigation](misc/tracking_example.png "Image d'illustration navigation")
+
 ## Utilisation de Metabase
 Bien que l'inscription est encore nécessaire, une fois l'accès et la DB configurée,
 une requête rapide permet de vérifier le bon fonctionnement du tout (après avoir visité la page web de démonstration):
