@@ -1,0 +1,49 @@
+version: "2.4"
+services:
+  api:
+    build: ./api/python
+    environment:
+      PG_DSN: 'postgresql://demo:demo@db/demo'
+      HOST: 0.0.0.0
+      PORT: 5000
+    ports:
+    - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image:  postgres:12
+    environment:
+      POSTGRES_USER: 'demo'
+      POSTGRES_PASSWORD: 'demo'
+    ports:
+    - "5432:5432"
+    volumes:
+      - ./db/demo.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  site:
+    image: nginx:alpine
+    ports:
+    - "8080:80"
+    volumes:
+    - ./demo_website:/usr/share/nginx/html
+    - ./tracker/tracker.js:/usr/share/nginx/html/tracker.js
+    depends_on:
+      - api
+  metabase:
+    image: metabase/metabase:latest
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_NAME: demo
+      MB_DB_PORT: 5432
+      MB_DB_USER: demo
+      MB_DB_PASS: demo
+      MB_DB_HOST: db
+      JAVA_TIMEZONE: CET
+    ports:
+    - "3000:3000"
+

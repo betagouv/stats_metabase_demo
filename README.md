@@ -13,4 +13,38 @@ API (Fastapi: pydantic et starlette.io) qui valide les données reçues, et les 
 ### PostgreSQL
 Base de données qui se charge du stockage des événements
 ### Metabase
-Outil de visualisation des données capables d'interroger directement la base de données, de créer et de publier des visualisation et des tableaux de bords.
+Outil de visualisation des dnnées capables d'interroger directement la base de données, de créer et de publier des visualisation et des tableaux de bords.
+
+
+## Essayer la demo
+Pour lancer la démonstration, avec l'aide de [docker-compose](https://docs.docker.com/compose/), lancez la commande suivante à la raçine du projet :
+```bash
+~> docker-compose up
+```
+
+Une fois lancé, les prochaines interfaces seront disponibles:
+- [http://localhost:5000](http://localhost:5000) l'api (avec la documentation OpenAPI disponible sur [http://localhost:5000/docs](http://localhost:5000/docs))
+- [http://localhost:8080](http://localhost:8080) : une site web de démonstration équipé du tracker JS
+- [http://localhost:](http://localhost:) : l'interface metabase
+
+En parallèle, si vous disposez d'un client PostgreSQL (psql ou autre), vous pouvez vous connecter directement à la base de données (utilisateur _demo_, mot de passe _demo_, base de données "demo").
+
+## Utilisation de Metabase
+Bien que l'inscription est encore nécessaire, une fois l'accès et la DB configurée,
+une requête rapide permet de vérifier le bon fonctionnement du tout (après avoir visité la page web de démonstration):
+```sql
+SELECT
+    COUNT(*),
+    data->>'action'
+FROM
+    trackers
+GROUP BY data->>'action
+```
+
+Ce qui devrait donner un résultat semblable à ceci:
+![Exemple metabase](misc/metabase_example.png "Image d'illustration metabase")
+
+
+### État de la démo
+- il n'y à pas encore de tableau de bord metabase preconstruit de disponible
+- l'initialisation du tracker pour le site de demonstration se fait par le fichier `demo_website/js/demo_init.js`

@@ -37,7 +37,9 @@ class Actions(str, Enum):
     Enumeration of available actions.
     This enforcement of a limited and predefined list of actions is optional.
     """
-    load = 'LOAD'
+    load = 'load'
+    scroll = 'scroll'
+    click = 'click'
 
 
 class ClientContext(BaseModel):
@@ -75,8 +77,8 @@ class TrackerModel(BaseModel):
                 "order": 10,
                 "session_id": "77777777-6666-5555-4444-333333333333",
                 "page": "test_page",
-                "action": "arrival",
-                "meta": {},
+                "action": "load",
+                "meta": "{}",
                 "client_context": {
                     "referer": None,
                 },
@@ -118,7 +120,7 @@ if config['log_level'] == 'debug':
 logger.debug('Debug activated')
 logger.debug('Config values: \n%s', yaml.dump(config))
 
-app = FastAPI(openapi_prefix=config['proxy_prefix'])
+app = FastAPI(root_path=config['proxy_prefix'])
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -200,7 +202,7 @@ async def tracking(query: TrackerModel, request: Request, db=Depends(get_db)):
 
 # ##################################################################### STARTUP
 # #############################################################################
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description='Matching server process')
     parser.add_argument('--config', dest='config', help='config file', default=None)
     parser.add_argument('--debug', dest='debug', action='store_true', default=False, help='Debug mode')
@@ -215,3 +217,7 @@ if __name__ == "__main__":
         app,
         **config['server']
     )
+
+
+if __name__ == "__main__":
+    main()
