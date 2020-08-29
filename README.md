@@ -25,9 +25,11 @@ Pour lancer la démonstration, avec l'aide de [docker-compose](https://docs.dock
 Une fois lancé, les prochaines interfaces seront disponibles:
 - [http://localhost:5000](http://localhost:5000) l'api (avec la documentation OpenAPI disponible sur [http://localhost:5000/docs](http://localhost:5000/docs))
 - [http://localhost:8080](http://localhost:8080) : une site web de démonstration équipé du tracker JS
-- [http://localhost:](http://localhost:) : l'interface metabase
+- [http://localhost:3000](http://localhost:3000) : l'interface metabase
 
 En parallèle, si vous disposez d'un client PostgreSQL (psql ou autre), vous pouvez vous connecter directement à la base de données (utilisateur _demo_, mot de passe _demo_, base de données "demo").
+
+> Remarque : dans l'environnement de démonstration aucune donnée n'est persistante.
 
 ## Utilisation de Metabase
 Bien que l'inscription est encore nécessaire, une fois l'accès et la DB configurée,
@@ -46,5 +48,5 @@ Ce qui devrait donner un résultat semblable à ceci:
 
 
 ### État de la démo
-- il n'y à pas encore de tableau de bord metabase preconstruit de disponible
+- il n'y a pas encore de tableau de bord metabase preconstruit de disponible
 - l'initialisation du tracker pour le site de demonstration se fait par le fichier `demo_website/js/demo_init.js`
