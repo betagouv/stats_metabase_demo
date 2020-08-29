@@ -5,7 +5,7 @@ La solution exposée utilise un _stack_ technologique courant: Python, Javascrip
 
 :construction: En Construction :construction:
 
-## Compostants:
+## Composants:
 ### Tracker Javascript
 Le tracker JS qui signale les événements à l'API Python
 ### API Python
